@@ -10,7 +10,7 @@ import androidx.activity.result.IntentSenderRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.example.fooding.BuildConfig
-import com.example.fooding.MainActivity
+import com.example.fooding.HomeActivity
 import com.example.fooding.databinding.ActivitySigninBinding
 import com.google.android.gms.auth.api.identity.BeginSignInRequest
 import com.google.android.gms.auth.api.identity.GetSignInIntentRequest
@@ -30,7 +30,7 @@ class SignInActivity : AppCompatActivity() {
     private val tag = "SingInActivity"
 
     private val onSuccess: SignInSuccessListener = { idToken ->
-        startActivity(Intent(this, MainActivity::class.java).apply {
+        startActivity(Intent(this, HomeActivity::class.java).apply {
             // home activity 구성 후 putExtra 추가
         })
         finish()
