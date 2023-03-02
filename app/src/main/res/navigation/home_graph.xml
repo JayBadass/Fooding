@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home_graph"
+    app:startDestination="@id/navigation_calendar">
+
+    <fragment
+        android:id="@+id/navigation_add"
+        android:name="com.example.fooding.ui.addfood.AddFoodFragment"
+        android:label="AddFoodFragment"
+        tools:layout="@layout/fragment_addfood" />
+    <fragment
+        android:id="@+id/navigation_calendar"
+        android:name="com.example.fooding.ui.calendar.CalendarFragment"
+        android:label="CalendarFragment"
+        tools:layout="@layout/fragment_calendar" />
+    <fragment
+        android:id="@+id/navigation_chart"
+        android:name="com.example.fooding.ui.chart.ChartFragment"
+        android:label="ChartFragment"
+        tools:layout="@layout/fragment_chart" />
+    <fragment
+        android:id="@+id/navigation_mypage"
+        android:name="com.example.fooding.ui.mypage.MyPageFragment"
+        android:label="MyPageFragment"
+        tools:layout="@layout/fragment_mypage" />
+    <fragment
+        android:id="@+id/navigation_search"
+        android:name="com.example.fooding.ui.search.SearchFragment"
+        android:label="SearchFragment"
+        tools:layout="@layout/fragment_search" />
+</navigation>

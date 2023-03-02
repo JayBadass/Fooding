@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">fooding</string>
     <string name="signin_text">지금 바로 함께 하세요!</string>
+    <string name="Calendar">Calendar</string>
+    <string name="Search">Search</string>
+    <string name="Add">Add</string>
+    <string name="Chart">Chart</string>
+    <string name="MyPage">MyPage</string>
 </resources>

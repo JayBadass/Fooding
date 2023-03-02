@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <item
+        android:id="@+id/navigation_calendar"
+        android:icon="@drawable/selector_calendar_menu"
+        tools:ignore="MenuTitle" />
+    <item
+        android:id="@+id/navigation_search"
+        android:icon="@drawable/selector_search_menu"
+        tools:ignore="MenuTitle" />
+    <item
+        android:id="@+id/navigation_add"
+        android:icon="@drawable/selector_add_menu"
+        tools:ignore="MenuTitle" />
+    <item
+        android:id="@+id/navigation_chart"
+        android:icon="@drawable/selector_chart_menu"
+        tools:ignore="MenuTitle" />
+    <item
+        android:id="@+id/navigation_mypage"
+        android:icon="@drawable/selector_mypage_menu"
+        tools:ignore="MenuTitle" />
+</menu>
