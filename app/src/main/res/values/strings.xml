@@ -6,4 +6,19 @@
     <string name="Add">Add</string>
     <string name="Chart">Chart</string>
     <string name="MyPage">MyPage</string>
+    <string name="시간">시간</string>
+    <string name="분류">분류</string>
+    <string name="아침">아침</string>
+    <string name="점심">점심</string>
+    <string name="저녁">저녁</string>
+    <string name="간식">간식</string>
+    <string name="메모">메모</string>
+    <string name="memo_placeholder">간단한 메모를 남겨주세요.(선택)</string>
+    <string name="영양성분">영양성분(선택)</string>
+    <string name="완료하기">완료하기</string>
+    <string name="날짜및시간">날짜 및 시간</string>
+    <string name="앨범열기">앨범열기</string>
+    <string name="촬영하기">촬영하기</string>
+    <string name="hint_time">00:00</string>
+    <string name="hint_date">2023–03–06</string>
 </resources>
