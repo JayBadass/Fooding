@@ -44,7 +44,7 @@ class AddFoodRepository(
         category: String?,
         memo: String?,
         imgUri: Uri?,
-        nutrition: List<Nutrition>?,
+        nutrition: Nutrition?,
     ) {
         val downloadUri = if (imgUri != null) uploadImg(imgUri) else Uri.EMPTY
         apiClient.uploadPost(Post(time, category, memo, downloadUri, nutrition))
