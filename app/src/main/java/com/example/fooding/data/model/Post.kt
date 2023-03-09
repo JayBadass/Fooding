@@ -9,20 +9,20 @@ data class Post(
     val category: String?,
     val memo: String?,
     val imgUri: Uri?,
-    val nutrition: List<Nutrition>?,
-)
+    val nutritionInfo: Nutrition?,
+) : java.io.Serializable
 
 @JsonClass(generateAdapter = true)
 data class Nutrition(
-    val name: String,
-    val servingWt: Int,
-    val calories: Int,
-    val carb: Int,
-    val protein: Int,
-    val fat: Int,
-    val sugar: Int,
-    val sodium: Int,
-    val cholesterol: Int,
-    val saturatedFat: Int,
-    val transFat: Int,
-)
+    val foodName: String?,
+    val servingSize: String?,
+    val calories: String?,
+    val carb: String?,
+    val protein: String?,
+    val fat: String?,
+    val sugar: String?,
+    val sodium: String?,
+    val cholesterol: String?,
+    val saturatedFat: String?,
+    val transFat: String?,
+) : java.io.Serializable

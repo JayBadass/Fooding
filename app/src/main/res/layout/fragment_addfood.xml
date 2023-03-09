@@ -6,7 +6,7 @@
     <data>
 
         <variable
-            name="addPostViewModel"
+            name="addFoodViewModel"
             type="com.example.fooding.ui.addfood.AddFoodViewModel" />
 
     </data>
@@ -34,11 +34,11 @@
                 android:id="@+id/add_nutrition_button"
                 android:layout_width="19dp"
                 android:layout_height="19dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="20dp"
                 android:background="@drawable/selector_add_menu"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/text_nutrition" />
+                app:layout_constraintStart_toEndOf="@+id/text_nutrition"
+                app:layout_constraintTop_toBottomOf="@+id/divider3" />
 
             <Button
                 android:id="@+id/add_gallery_img_button"
@@ -222,7 +222,7 @@
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="12dp"
                 android:hint="@string/memo_placeholder"
-                android:text="@={addPostViewModel.memo}"
+                android:text="@={addFoodViewModel.memo}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/text_memo" />
 
@@ -251,10 +251,21 @@
                 android:id="@+id/btn_complete"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="20dp"
                 android:enabled="false"
                 android:text="@string/완료하기"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/nutrition_list_view" />
+
+            <LinearLayout
+                android:id="@+id/nutrition_list_view"
+                android:layout_width="300dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toTopOf="@id/btn_complete"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/add_nutrition_button" />
 
