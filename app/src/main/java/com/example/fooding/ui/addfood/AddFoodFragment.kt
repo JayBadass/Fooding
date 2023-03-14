@@ -18,13 +18,17 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.RadioButton
+import android.widget.TextView
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.fooding.FoodingApplication
+import com.example.fooding.data.model.Nutrition
 import com.example.fooding.data.source.AddFoodRepository
 import com.example.fooding.databinding.FragmentAddfoodBinding
 import java.io.IOException
@@ -84,16 +88,18 @@ class AddFoodFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentAddfoodBinding.inflate(inflater, container, false)
-        binding.addPostViewModel = viewModel
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.addFoodViewModel = viewModel
         setCategoryButton()
         setAddImgButton()
         setCompleteButton()
         setDateTimePickerDialog()
+        setAddNutritionButton()
+        observeNavigationCallBack()
     }
 
     private fun setImgViewByGallery(uri: Uri) {
@@ -124,6 +130,13 @@ class AddFoodFragment : Fragment() {
             if ((hasWritePermission || minSdk29) && hasCameraPermission) {
                 getCaptureImage.launch(intent)
             }
+        }
+    }
+
+    private fun setAddNutritionButton() {
+        binding.addNutritionButton.setOnClickListener {
+            val action = AddFoodFragmentDirections.actionGlobalAddNutrition()
+            findNavController().navigate(action)
         }
     }
 
@@ -267,6 +280,35 @@ class AddFoodFragment : Fragment() {
         } catch (e: IOException) {
             Log.e("saveFile", "save failed", e)
         }
+    }
+
+    private fun observeNavigationCallBack() {
+        findNavController().currentBackStackEntry?.savedStateHandle?.getLiveData<String>("foodName")
+            ?.observe(viewLifecycleOwner) { foodName ->
+                foodName?.let {
+                    createTextView(it)
+                }
+            }
+        findNavController().currentBackStackEntry?.savedStateHandle?.getLiveData<Nutrition>("nutritionList")
+            ?.observe(viewLifecycleOwner) { nutritionList ->
+                nutritionList?.let {
+                    viewModel.setNutrition(it)
+                }
+            }
+    }
+
+    private fun createTextView(text: String) {
+        val newTextView = TextView(requireContext())
+        newTextView.text = text
+        newTextView.textSize = 15F
+        newTextView.id = View.generateViewId()
+        val param: LinearLayout.LayoutParams = LinearLayout.LayoutParams(
+            LinearLayout.LayoutParams.WRAP_CONTENT,
+            LinearLayout.LayoutParams.WRAP_CONTENT
+        )
+        param.marginEnd = 10
+        newTextView.layoutParams = param
+        binding.nutritionListView.addView(newTextView)
     }
 
     override fun onDestroyView() {

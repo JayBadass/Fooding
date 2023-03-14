@@ -13,14 +13,13 @@ import kotlinx.coroutines.launch
 
 class AddFoodViewModel(private val repository: AddFoodRepository) : ViewModel() {
 
-
     val memo = MutableLiveData<String>()
-    private var nutritionValue: MutableList<Nutrition> = mutableListOf()
     private val _date = MutableLiveData<String>()
     val date: LiveData<String> get() = _date
     private val _time = MutableLiveData<String>()
     val time: LiveData<String> get() = _time
-    var category: String? = null
+    private var category: String? = null
+    var nutritionInfo: Nutrition? = null
 
     private val _imgUri: MutableLiveData<Uri> = MutableLiveData()
     private val imgUri: LiveData<Uri> = _imgUri
@@ -47,6 +46,7 @@ class AddFoodViewModel(private val repository: AddFoodRepository) : ViewModel() 
         val memoValue = memo.value
         val imgUriValue = imgUri.value
         val categoryValue = category
+        val nutritionValue = nutritionInfo
         viewModelScope.launch {
             repository.uploadPost(timeValue, categoryValue, memoValue, imgUriValue, nutritionValue)
         }
@@ -58,6 +58,10 @@ class AddFoodViewModel(private val repository: AddFoodRepository) : ViewModel() 
 
     fun setTime(time: String) {
         _time.value = time
+    }
+
+    fun setNutrition(nutrition: Nutrition) {
+        nutritionInfo = nutrition
     }
 
     companion object {
