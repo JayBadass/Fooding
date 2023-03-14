@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="clickListener"
+            type="com.example.fooding.ui.common.PostClickListener" />
+
+        <variable
+            name="post"
+            type="com.example.fooding.data.model.Post" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <!--        android:onClick="@{clickListener.onPostClick(post)}"-->
+
+        <ImageView
+            android:id="@+id/image_food"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars"
+            android:contentDescription="@string/음식사진" />
+
+        <TextView
+            android:id="@+id/text_category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="10dp"
+            android:text="@{post.category}"
+            app:layout_constraintStart_toEndOf="@+id/image_food"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="아침" />
+
+        <TextView
+            android:id="@+id/text_food_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="20dp"
+            android:text=""
+            app:layout_constraintStart_toEndOf="@+id/image_food"
+            app:layout_constraintTop_toBottomOf="@+id/text_category"
+            tools:text="떡볶이" />
+
+        <TextView
+            android:id="@+id/text_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="20dp"
+            android:text="@{post.time}"
+            app:layout_constraintStart_toEndOf="@+id/image_food"
+            app:layout_constraintTop_toBottomOf="@+id/text_food_name"
+            tools:text="2023-03-10" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
