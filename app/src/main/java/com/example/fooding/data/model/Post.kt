@@ -5,7 +5,9 @@ import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
 data class Post(
-    val time: String,
+    val foodName: String?,
+    val date: Long?,
+    val time: String?,
     val category: String?,
     val memo: String?,
     val imgUri: Uri?,
