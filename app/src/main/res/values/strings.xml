@@ -39,4 +39,5 @@
     <string name="음식이름">음식 이름</string>
     <string name="음식사진">음식사진</string>
     <string name="영양성분검색">영양성분 검색</string>
+    <string name="추가하기버튼">추가하기버튼</string>
 </resources>
