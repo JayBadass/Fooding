@@ -40,13 +40,15 @@ class AddFoodRepository(
     }
 
     suspend fun uploadPost(
-        time: String,
+        title: String?,
+        date: Long?,
+        time: String?,
         category: String?,
         memo: String?,
         imgUri: Uri?,
         nutrition: Nutrition?,
     ) {
         val downloadUri = if (imgUri != null) uploadImg(imgUri) else Uri.EMPTY
-        apiClient.uploadPost(Post(time, category, memo, downloadUri, nutrition))
+        apiClient.uploadPost(Post(title, date, time, category, memo, downloadUri, nutrition))
     }
 }

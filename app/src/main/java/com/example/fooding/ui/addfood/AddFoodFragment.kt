@@ -32,6 +32,7 @@ import com.example.fooding.data.model.Nutrition
 import com.example.fooding.data.source.AddFoodRepository
 import com.example.fooding.databinding.FragmentAddfoodBinding
 import java.io.IOException
+import java.text.SimpleDateFormat
 import java.util.*
 
 class AddFoodFragment : Fragment() {
@@ -149,8 +150,10 @@ class AddFoodFragment : Fragment() {
             val datePickerDialog = DatePickerDialog(
                 requireContext(),
                 DatePickerDialog.OnDateSetListener { _, year, monthOfYear, dayOfMonth ->
-                    val date = "${year}-${monthOfYear + 1}-${dayOfMonth}"
-                    binding.textInputDate.setText(date)
+                    val dateString = "${year}-${monthOfYear + 1}-${dayOfMonth}"
+                    val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                    val date = dateFormat.parse(dateString)!!.time
+                    binding.textInputDate.setText(dateString)
                     viewModel.setDate(date)
                 },
                 year,
@@ -159,7 +162,9 @@ class AddFoodFragment : Fragment() {
             )
             datePickerDialog.show()
             viewModel.date.observe(viewLifecycleOwner) { date ->
-                binding.textInputTime.setText(date)
+                val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                val dateString = dateFormat.format(date)
+                binding.textInputTime.setText(dateString)
             }
         }
 
