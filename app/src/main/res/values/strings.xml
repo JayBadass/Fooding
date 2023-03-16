@@ -40,4 +40,6 @@
     <string name="음식사진">음식사진</string>
     <string name="영양성분검색">영양성분 검색</string>
     <string name="추가하기버튼">추가하기버튼</string>
+    <string name="검색하기버튼">검색하기버튼</string>
+    <string name="식품이름을입력하세요">식품 이름을 입력하세요</string>
 </resources>
