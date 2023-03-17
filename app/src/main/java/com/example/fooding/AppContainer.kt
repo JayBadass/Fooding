@@ -1,14 +1,22 @@
 package com.example.fooding
 
-import com.example.fooding.data.source.remote.ApiClient
+import com.example.fooding.data.source.remote.PostApiClient
+import com.example.fooding.data.source.remote.FoodApiClient
 
 class AppContainer {
 
-    private var apiClient: ApiClient? = null
+    private var postApiClient: PostApiClient? = null
+    private var foodApiClient: FoodApiClient? = null
 
-    fun provideApiClient(): ApiClient {
-        return apiClient ?: ApiClient.create().apply {
-            apiClient = this
+    fun providePostApiClient(): PostApiClient {
+        return postApiClient ?: PostApiClient.create().apply {
+            postApiClient = this
+        }
+    }
+
+    fun provideFoodApiClient(): FoodApiClient {
+        return foodApiClient ?: FoodApiClient.create().apply {
+            foodApiClient = this
         }
     }
 }

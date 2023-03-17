@@ -12,7 +12,7 @@ import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Query
 
-interface ApiClient {
+interface PostApiClient {
 
     @POST("post.json")
     suspend fun uploadPost(@Body post: Post)
@@ -28,7 +28,7 @@ interface ApiClient {
         private const val baseUrl =
             "https://fooding-a09ef-default-rtdb.asia-southeast1.firebasedatabase.app"
 
-        fun create(): ApiClient {
+        fun create(): PostApiClient {
 
             val moshi = Moshi.Builder().add(Converters()).build()
 
@@ -45,7 +45,7 @@ interface ApiClient {
                 .addConverterFactory(MoshiConverterFactory.create(moshi))
                 .client(client)
                 .build()
-                .create(ApiClient::class.java)
+                .create(PostApiClient::class.java)
         }
     }
 }

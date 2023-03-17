@@ -46,7 +46,7 @@ class AddFoodFragment : Fragment() {
 
     private val viewModel: AddFoodViewModel by viewModels {
         AddFoodViewModel.provideFactory(
-            repository = AddFoodRepository(FoodingApplication.appContainer.provideApiClient())
+            repository = AddFoodRepository(FoodingApplication.appContainer.providePostApiClient())
         )
     }
 

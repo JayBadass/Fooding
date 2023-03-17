@@ -4,14 +4,14 @@ import android.net.Uri
 import android.util.Log
 import com.example.fooding.data.model.Nutrition
 import com.example.fooding.data.model.Post
-import com.example.fooding.data.source.remote.ApiClient
+import com.example.fooding.data.source.remote.PostApiClient
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 import kotlinx.coroutines.tasks.await
 
 class AddFoodRepository(
-    private val apiClient: ApiClient
+    private val postApiClient: PostApiClient
 ) {
 
     private val imgRef = Firebase.storage.reference.child("images")
@@ -49,6 +49,6 @@ class AddFoodRepository(
         nutrition: Nutrition?,
     ) {
         val downloadUri = if (imgUri != null) uploadImg(imgUri) else Uri.EMPTY
-        apiClient.uploadPost(Post(title, date, time, category, memo, downloadUri, nutrition))
+        postApiClient.uploadPost(Post(title, date, time, category, memo, downloadUri, nutrition))
     }
 }

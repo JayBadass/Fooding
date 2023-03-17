@@ -1,6 +1,5 @@
 package com.example.fooding.ui.calendar
 
-import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -27,7 +26,7 @@ class CalendarFragment : Fragment(), PostClickListener {
 
     private val viewModel: CalendarViewModel by viewModels {
         CalendarViewModel.provideFactory(
-            repository = CalendarRepository(FoodingApplication.appContainer.provideApiClient())
+            repository = CalendarRepository(FoodingApplication.appContainer.providePostApiClient())
         )
     }
 
