@@ -8,8 +8,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fooding.FoodingApplication
+import com.example.fooding.HomeGraphDirections
 import com.example.fooding.data.model.Post
 import com.example.fooding.data.source.CalendarRepository
 import com.example.fooding.databinding.FragmentCalendarBinding
@@ -104,6 +106,7 @@ class CalendarFragment : Fragment(), PostClickListener {
 //    }
 
     override fun onPostClick(post: Post) {
-        TODO("Not yet implemented")
+        val action = HomeGraphDirections.actionGlobalPost(post)
+        findNavController().navigate(action)
     }
 }
