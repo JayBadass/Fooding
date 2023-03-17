@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
-import com.example.fooding.data.model.Nutrition
+import com.example.fooding.data.model.FoodResponse
 import com.example.fooding.data.source.AddFoodRepository
 import kotlinx.coroutines.launch
 
@@ -21,7 +21,7 @@ class AddFoodViewModel(private val repository: AddFoodRepository) : ViewModel() 
     private val _time = MutableLiveData<String>()
     val time: LiveData<String> get() = _time
     private var category: String? = null
-    var nutritionInfo: Nutrition? = null
+    var nutritionInfo: FoodResponse.Food? = null
 
     private val _imgUri: MutableLiveData<Uri> = MutableLiveData()
     private val imgUri: LiveData<Uri> = _imgUri
@@ -64,7 +64,7 @@ class AddFoodViewModel(private val repository: AddFoodRepository) : ViewModel() 
         _time.value = time
     }
 
-    fun setNutrition(nutrition: Nutrition) {
+    fun setNutrition(nutrition: FoodResponse.Food) {
         nutritionInfo = nutrition
     }
 

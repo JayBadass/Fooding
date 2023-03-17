@@ -2,7 +2,7 @@ package com.example.fooding.data.source
 
 import android.net.Uri
 import android.util.Log
-import com.example.fooding.data.model.Nutrition
+import com.example.fooding.data.model.FoodResponse
 import com.example.fooding.data.model.Post
 import com.example.fooding.data.source.remote.PostApiClient
 import com.google.firebase.database.ktx.database
@@ -46,7 +46,7 @@ class AddFoodRepository(
         category: String?,
         memo: String?,
         imgUri: Uri?,
-        nutrition: Nutrition?,
+        nutrition: FoodResponse.Food?,
     ) {
         val downloadUri = if (imgUri != null) uploadImg(imgUri) else Uri.EMPTY
         postApiClient.uploadPost(Post(title, date, time, category, memo, downloadUri, nutrition))
