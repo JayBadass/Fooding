@@ -27,8 +27,9 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.fooding.FoodingApplication
-import com.example.fooding.data.model.Nutrition
+import com.example.fooding.data.model.FoodResponse
 import com.example.fooding.data.source.AddFoodRepository
 import com.example.fooding.databinding.FragmentAddfoodBinding
 import java.io.IOException
@@ -43,6 +44,8 @@ class AddFoodFragment : Fragment() {
     private var hasReadPermission = false
     private var hasWritePermission = false
     private var hasCameraPermission = false
+
+    private val args: AddFoodFragmentArgs by navArgs()
 
     private val viewModel: AddFoodViewModel by viewModels {
         AddFoodViewModel.provideFactory(
@@ -95,12 +98,20 @@ class AddFoodFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.addFoodViewModel = viewModel
+        setLayoutFromSearchDetail()
         setCategoryButton()
         setAddImgButton()
         setCompleteButton()
         setDateTimePickerDialog()
         setAddNutritionButton()
         observeNavigationCallBack()
+    }
+
+    private fun setLayoutFromSearchDetail() {
+        if (args.food != null) {
+            viewModel.setNutrition(args.food!!)
+            args.food!!.DESC_KOR?.let { createTextView(it) }
+        }
     }
 
     private fun setImgViewByGallery(uri: Uri) {
@@ -294,7 +305,9 @@ class AddFoodFragment : Fragment() {
                     createTextView(it)
                 }
             }
-        findNavController().currentBackStackEntry?.savedStateHandle?.getLiveData<Nutrition>("nutritionList")
+        findNavController().currentBackStackEntry?.savedStateHandle?.getLiveData<FoodResponse.Food>(
+            "nutritionList"
+        )
             ?.observe(viewLifecycleOwner) { nutritionList ->
                 nutritionList?.let {
                     viewModel.setNutrition(it)

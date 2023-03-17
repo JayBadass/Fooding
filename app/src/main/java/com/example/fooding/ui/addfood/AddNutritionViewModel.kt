@@ -2,11 +2,11 @@ package com.example.fooding.ui.addfood
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.fooding.data.model.Nutrition
+import com.example.fooding.data.model.FoodResponse
 
 class AddNutritionViewModel : ViewModel() {
 
-    var nutrition: Nutrition? = null
+    var nutrition: FoodResponse.Food? = null
 
     val foodName = MutableLiveData<String>()
     val servingSize = MutableLiveData<String>()
@@ -21,7 +21,7 @@ class AddNutritionViewModel : ViewModel() {
     val transFat = MutableLiveData<String>()
 
     fun serializeNutrition() {
-        nutrition = Nutrition(
+        nutrition = FoodResponse.Food(
             foodName.value,
             servingSize.value,
             calories.value,
@@ -32,7 +32,17 @@ class AddNutritionViewModel : ViewModel() {
             sodium.value,
             cholesterol.value,
             saturatedFat.value,
-            transFat.value
+            transFat.value,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
         )
     }
 }

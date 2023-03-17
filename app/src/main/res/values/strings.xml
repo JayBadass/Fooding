@@ -13,8 +13,9 @@
     <string name="저녁">저녁</string>
     <string name="간식">간식</string>
     <string name="메모">메모</string>
-    <string name="weight_value_format">%1$s g</string>
-    <string name="calories_value_format">%1$s kcal</string>
+    <string name="g_value_format">%1$s g</string>
+    <string name="mg_value_format">%1$s mg</string>
+    <string name="kcal_value_format">%1$s kcal</string>
     <string name="memo_placeholder">간단한 메모를 남겨주세요.(선택)</string>
     <string name="영양성분">영양성분(선택)</string>
     <string name="완료하기">완료하기</string>
