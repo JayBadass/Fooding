@@ -11,7 +11,7 @@
         android:icon="@drawable/selector_search_menu"
         tools:ignore="MenuTitle" />
     <item
-        android:id="@+id/navigation_addfood"
+        android:id="@+id/navigation_add_post"
         android:icon="@drawable/selector_add_menu"
         tools:ignore="MenuTitle" />
     <item

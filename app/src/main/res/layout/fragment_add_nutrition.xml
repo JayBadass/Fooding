@@ -7,7 +7,7 @@
 
         <variable
             name="addNutritionViewModel"
-            type="com.example.fooding.ui.addfood.AddNutritionViewModel" />
+            type="com.example.fooding.ui.addpost.AddNutritionViewModel" />
 
     </data>
 

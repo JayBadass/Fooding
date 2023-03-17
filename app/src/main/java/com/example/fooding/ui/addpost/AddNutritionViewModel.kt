@@ -1,4 +1,4 @@
-package com.example.fooding.ui.addfood
+package com.example.fooding.ui.addpost
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

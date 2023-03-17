@@ -43,7 +43,7 @@ class SearchDetailFragment : Fragment() {
 
     private fun setAddButton() {
         binding.btnAdd.setOnClickListener {
-            val action = HomeGraphDirections.actionGlobalAddfood(args.food)
+            val action = HomeGraphDirections.actionGlobalAddPost(args.food)
             findNavController().navigate(action)
         }
     }

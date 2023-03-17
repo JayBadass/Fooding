@@ -10,7 +10,7 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 import kotlinx.coroutines.tasks.await
 
-class AddFoodRepository(
+class AddPostRepository(
     private val postApiClient: PostApiClient
 ) {
 

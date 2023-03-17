@@ -1,4 +1,4 @@
-package com.example.fooding.ui.addfood
+package com.example.fooding.ui.addpost
 
 import android.Manifest
 import android.app.Activity
@@ -30,26 +30,26 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.fooding.FoodingApplication
 import com.example.fooding.data.model.FoodResponse
-import com.example.fooding.data.source.AddFoodRepository
-import com.example.fooding.databinding.FragmentAddfoodBinding
+import com.example.fooding.data.source.AddPostRepository
+import com.example.fooding.databinding.FragmentAddPostBinding
 import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
 
-class AddFoodFragment : Fragment() {
+class AddPostFragment : Fragment() {
 
-    private var _binding: FragmentAddfoodBinding? = null
+    private var _binding: FragmentAddPostBinding? = null
     private val binding get() = _binding!!
 
     private var hasReadPermission = false
     private var hasWritePermission = false
     private var hasCameraPermission = false
 
-    private val args: AddFoodFragmentArgs by navArgs()
+    private val args: AddPostFragmentArgs by navArgs()
 
-    private val viewModel: AddFoodViewModel by viewModels {
-        AddFoodViewModel.provideFactory(
-            repository = AddFoodRepository(FoodingApplication.appContainer.providePostApiClient())
+    private val viewModel: AddPostViewModel by viewModels {
+        AddPostViewModel.provideFactory(
+            repository = AddPostRepository(FoodingApplication.appContainer.providePostApiClient())
         )
     }
 
@@ -91,13 +91,13 @@ class AddFoodFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentAddfoodBinding.inflate(inflater, container, false)
+        _binding = FragmentAddPostBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.addFoodViewModel = viewModel
+        binding.addPostViewModel = viewModel
         setLayoutFromSearchDetail()
         setCategoryButton()
         setAddImgButton()
@@ -147,7 +147,7 @@ class AddFoodFragment : Fragment() {
 
     private fun setAddNutritionButton() {
         binding.addNutritionButton.setOnClickListener {
-            val action = AddFoodFragmentDirections.actionGlobalAddNutrition()
+            val action = AddPostFragmentDirections.actionGlobalAddNutrition()
             findNavController().navigate(action)
         }
     }
