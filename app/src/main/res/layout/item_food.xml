@@ -17,7 +17,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:onClick="@{() -> clickListener.onClick(food)}">
 
         <TextView
             android:id="@+id/text_food_name"
@@ -38,7 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginTop="20dp"
-            android:text="@{@string/weight_value_format(food.SERVING_SIZE)}"
+            android:text="@{@string/g_value_format(food.SERVING_SIZE)}"
             android:textColor="@color/black"
             android:textSize="15sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -51,7 +52,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="28dp"
             android:layout_marginTop="20dp"
-            android:text="@{@string/calories_value_format(food.NUTR_CONT1)}"
+            android:text="@{@string/kcal_value_format((!food.NUTR_CONT1.isEmpty()) ? food.NUTR_CONT1 : 0)}"
             android:textColor="@color/black"
             android:textSize="15sp"
             app:layout_constraintStart_toEndOf="@+id/text_serving_size"
@@ -70,8 +71,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/text_calories" />
 
-        <ImageButton
-            android:id="@+id/imageButton"
+        <ImageView
+            android:id="@+id/img_add_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="92dp"
