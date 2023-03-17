@@ -1,4 +1,4 @@
-package com.example.fooding.ui.addfood
+package com.example.fooding.ui.addpost
 
 import android.net.Uri
 import androidx.lifecycle.LiveData
@@ -8,10 +8,10 @@ import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.fooding.data.model.FoodResponse
-import com.example.fooding.data.source.AddFoodRepository
+import com.example.fooding.data.source.AddPostRepository
 import kotlinx.coroutines.launch
 
-class AddFoodViewModel(private val repository: AddFoodRepository) : ViewModel() {
+class AddPostViewModel(private val repository: AddPostRepository) : ViewModel() {
 
     val memo = MutableLiveData<String>()
     private val _title = MutableLiveData<String>()
@@ -52,7 +52,15 @@ class AddFoodViewModel(private val repository: AddFoodRepository) : ViewModel() 
         val categoryValue = category
         val nutritionValue = nutritionInfo
         viewModelScope.launch {
-            repository.uploadPost(titleValue, dateValue, timeValue, categoryValue, memoValue, imgUriValue, nutritionValue)
+            repository.uploadPost(
+                titleValue,
+                dateValue,
+                timeValue,
+                categoryValue,
+                memoValue,
+                imgUriValue,
+                nutritionValue
+            )
         }
     }
 
@@ -69,9 +77,9 @@ class AddFoodViewModel(private val repository: AddFoodRepository) : ViewModel() 
     }
 
     companion object {
-        fun provideFactory(repository: AddFoodRepository) = viewModelFactory {
+        fun provideFactory(repository: AddPostRepository) = viewModelFactory {
             initializer {
-                AddFoodViewModel(repository)
+                AddPostViewModel(repository)
             }
         }
     }

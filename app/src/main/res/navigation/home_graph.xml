@@ -6,10 +6,10 @@
     app:startDestination="@id/navigation_calendar">
 
     <fragment
-        android:id="@+id/navigation_addfood"
-        android:name="com.example.fooding.ui.addfood.AddFoodFragment"
-        android:label="AddFoodFragment"
-        tools:layout="@layout/fragment_addfood">
+        android:id="@+id/navigation_add_post"
+        android:name="com.example.fooding.ui.addpost.AddPostFragment"
+        android:label="AddFoFragment"
+        tools:layout="@layout/fragment_add_post">
         <argument
             android:name="food"
             android:defaultValue="@null"
@@ -38,15 +38,15 @@
         tools:layout="@layout/fragment_search" />
     <fragment
         android:id="@+id/navigation_add_nutrition"
-        android:name="com.example.fooding.ui.addfood.AddNutritionFragment"
+        android:name="com.example.fooding.ui.addpost.AddNutritionFragment"
         android:label="AddNutritionFragment"
-        tools:layout="@layout/fragment_addnutrition" />
+        tools:layout="@layout/fragment_add_nutrition" />
     <action
         android:id="@+id/action_global_add_nutrition"
         app:destination="@id/navigation_add_nutrition" />
     <action
-        android:id="@+id/action_global_addfood"
-        app:destination="@id/navigation_addfood" />
+        android:id="@+id/action_global_add_post"
+        app:destination="@id/navigation_add_post" />
     <fragment
         android:id="@+id/search_detail_fragment"
         android:name="com.example.fooding.ui.search.SearchDetailFragment"
