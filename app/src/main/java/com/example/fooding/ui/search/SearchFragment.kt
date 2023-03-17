@@ -1,16 +1,17 @@
 package com.example.fooding.ui.search
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fooding.FoodingApplication
-import com.example.fooding.data.model.Nutrition
+import com.example.fooding.HomeGraphDirections
+import com.example.fooding.data.model.FoodResponse
 import com.example.fooding.data.source.SearchRepository
 import com.example.fooding.databinding.FragmentSearchBinding
 import com.example.fooding.ui.common.FoodClickListener
@@ -54,7 +55,6 @@ class SearchFragment : Fragment(), FoodClickListener {
             lifecycleScope.launch {
                 showLoadingIndicator()
                 val foodList = viewModel.getFoodList()
-                Log.d("fragment", "$foodList")
                 if (foodList != null) {
                     (binding.rvFoodList.adapter as FoodListAdapter).submitList(foodList)
                 }
@@ -71,7 +71,13 @@ class SearchFragment : Fragment(), FoodClickListener {
         binding.progressBar.visibility = View.GONE
     }
 
-    override fun onClick(nutrition: Nutrition) {
-        TODO("Not yet implemented")
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+    override fun onClick(food: FoodResponse.Food) {
+        val action = HomeGraphDirections.actionGlobalSearchDetail(food)
+        findNavController().navigate(action)
     }
 }
