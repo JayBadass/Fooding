@@ -17,8 +17,9 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <!--        android:onClick="@{clickListener.onPostClick(post)}"-->
+        android:layout_height="wrap_content"
+        android:onClick="@{() -> clickListener.onPostClick(post)}">
+
 
         <ImageView
             android:id="@+id/image_food"
@@ -27,12 +28,12 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
+            android:contentDescription="@string/음식사진"
             android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@tools:sample/avatars"
-            android:contentDescription="@string/음식사진" />
+            tools:srcCompat="@tools:sample/avatars" />
 
         <TextView
             android:id="@+id/text_category"
