@@ -48,7 +48,7 @@
         android:id="@+id/action_global_add_post"
         app:destination="@id/navigation_add_post" />
     <fragment
-        android:id="@+id/search_detail_fragment"
+        android:id="@+id/navigation_search_detail"
         android:name="com.example.fooding.ui.search.SearchDetailFragment"
         android:label="SearchDetailFragment">
         <argument
