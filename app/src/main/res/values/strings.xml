@@ -43,4 +43,7 @@
     <string name="추가하기버튼">추가하기버튼</string>
     <string name="검색하기버튼">검색하기버튼</string>
     <string name="식품이름을입력하세요">식품 이름을 입력하세요</string>
+    <string name="먹은음식영양성분">먹은 음식 영양성분</string>
+    <string name="nutrition_hint">클릭하여 상세 영양성분을 확인하세요</string>
+    <string name="제목">제목</string>
 </resources>
