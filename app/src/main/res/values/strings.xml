@@ -46,4 +46,5 @@
     <string name="먹은음식영양성분">먹은 음식 영양성분</string>
     <string name="nutrition_hint">클릭하여 상세 영양성분을 확인하세요</string>
     <string name="제목">제목</string>
+    <string name="촬영된음식사진">촬영된음식사진</string>
 </resources>
