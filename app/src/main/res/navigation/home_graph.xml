@@ -72,4 +72,17 @@
     <action
         android:id="@+id/action_global_post"
         app:destination="@id/navigation_post" />
+    <activity
+        android:id="@+id/navigation_nutrition_detail"
+        android:name="com.example.fooding.ui.post.NutritionDetailActivity"
+        android:label="NutritionDetailActivity">
+        <argument
+            android:name="food"
+            android:defaultValue="@null"
+            app:argType="com.example.fooding.data.model.FoodResponse$Food"
+            app:nullable="true" />
+    </activity>
+    <action
+        android:id="@+id/action_global_nutrition_detail"
+        app:destination="@id/navigation_nutrition_detail" />
 </navigation>
