@@ -32,7 +32,7 @@ class PostFragment : Fragment() {
 
     private fun setLayout() {
         binding.post = args.post
-        binding.foodImgView.setImageURI(args.post?.imgUri)
+        binding.foodImgView.setImageURI(Uri.parse(args.post?.imgUri))
     }
 
     private fun setNutritionButton() {
