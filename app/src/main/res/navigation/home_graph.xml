@@ -48,7 +48,7 @@
         android:id="@+id/action_global_add_post"
         app:destination="@id/navigation_add_post" />
     <fragment
-        android:id="@+id/search_detail_fragment"
+        android:id="@+id/navigation_search_detail"
         android:name="com.example.fooding.ui.search.SearchDetailFragment"
         android:label="SearchDetailFragment">
         <argument
@@ -58,5 +58,18 @@
     </fragment>
     <action
         android:id="@+id/action_global_search_detail"
-        app:destination="@id/search_detail_fragment" />
+        app:destination="@id/navigation_search_detail" />
+    <fragment
+        android:id="@+id/navigation_post"
+        android:name="com.example.fooding.ui.post.PostFragment"
+        android:label="PostFragment"
+        tools:layout="@layout/fragment_post">
+        <argument
+            android:name="post"
+            app:argType="com.example.fooding.data.model.Post"
+            app:nullable="true" />
+    </fragment>
+    <action
+        android:id="@+id/action_global_post"
+        app:destination="@id/navigation_post" />
 </navigation>
