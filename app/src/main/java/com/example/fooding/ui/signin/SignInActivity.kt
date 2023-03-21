@@ -9,16 +9,24 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.IntentSenderRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.example.fooding.BuildConfig
 import com.example.fooding.HomeActivity
+import com.example.fooding.R
+import com.example.fooding.data.model.User
+import com.example.fooding.data.source.UserRepository
+import com.example.fooding.data.source.local.AppDatabase
+import com.example.fooding.data.source.remote.PostApiClient
 import com.example.fooding.databinding.ActivitySigninBinding
 import com.google.android.gms.auth.api.identity.BeginSignInRequest
 import com.google.android.gms.auth.api.identity.GetSignInIntentRequest
 import com.google.android.gms.auth.api.identity.Identity
 import com.google.android.gms.auth.api.identity.SignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.coroutines.launch
 
 private typealias SignInSuccessListener = (idToken: String) -> Unit
 
@@ -26,14 +34,34 @@ class SignInActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySigninBinding
     private lateinit var signInClient: SignInClient
+    private lateinit var userRepository: UserRepository
     private val signInRequest: BeginSignInRequest = getBeginSignInRequest()
     private val tag = "SingInActivity"
 
     private val onSuccess: SignInSuccessListener = { idToken ->
-        startActivity(Intent(this, HomeActivity::class.java).apply {
-            // home activity 구성 후 putExtra 추가
-        })
-        finish()
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(getString(R.string.default_web_client_id))
+            .requestEmail()
+            .build()
+
+        GoogleSignIn.getClient(this, gso).silentSignIn()
+            .addOnSuccessListener { googleSignInAccount ->
+                googleSignInAccount?.let {
+                    val user = User(
+                        it.id!!,
+                        it.displayName ?: "",
+                        it.email ?: "",
+                        it.photoUrl.toString(),
+                        "",
+                        "",
+                        "",
+                        ""
+                    )
+                    saveUser(user)
+                }
+                startActivity(Intent(this, HomeActivity::class.java))
+                finish()
+            }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -118,7 +146,10 @@ class SignInActivity : AppCompatActivity() {
 
     private fun getGoogleIdToken(activityResult: ActivityResult, onSuccess: SignInSuccessListener) {
         val data = activityResult.data ?: return
-        if (activityResult.resultCode != RESULT_OK) return
+        if (activityResult.resultCode != RESULT_OK) {
+            Log.d("SignIn", "Login not successful")
+            return
+        }
         val idToken = signInClient.getSignInCredentialFromIntent(data).googleIdToken
         if (idToken != null) {
             onSuccess(idToken)
@@ -149,6 +180,14 @@ class SignInActivity : AppCompatActivity() {
                 }
         } else {
             onSuccess(lastToken)
+        }
+    }
+
+    private fun saveUser(user: User) {
+        val userDao = AppDatabase.getInstance(this)
+        userRepository = UserRepository(userDao, PostApiClient.create())
+        lifecycleScope.launch {
+            userRepository.saveUser(user)
         }
     }
 }
