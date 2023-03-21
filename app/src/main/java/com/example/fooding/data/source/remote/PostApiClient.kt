@@ -18,11 +18,14 @@ interface PostApiClient {
     suspend fun uploadPost(@Body post: Post)
 
     @GET("post.json")
-    suspend fun getPost(
+    suspend fun getPostByTime(
         @Query("orderBy") orderBy: String,
         @Query("startAt") startAt: Long,
         @Query("endAt") endAt: Long
     ): Map<String, Post>
+
+    @GET("post.json")
+    suspend fun getAllPost(): Map<String, Post>
 
     companion object {
         private const val baseUrl =
