@@ -58,4 +58,8 @@
     <string name="현재체중">현재 체중</string>
     <string name="수정하기">수정하기</string>
     <string name="오늘섭취한칼로리">오늘 섭취한 칼로리</string>
+    <string name="일주일간섭취한칼로리">일주일 간 섭취한 칼로리</string>
+    <string name="통계">통계</string>
+    <string name="일주일간섭취칼로리">일주일간 섭취한 칼로리 분석</string>
+    <string name="오늘섭취영양성분분석">오늘 섭취한 영양성분 분석</string>
 </resources>
