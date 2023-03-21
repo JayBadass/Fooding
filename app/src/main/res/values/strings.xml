@@ -47,4 +47,15 @@
     <string name="nutrition_hint">클릭하여 상세 영양성분을 확인하세요</string>
     <string name="제목">제목</string>
     <string name="촬영된음식사진">촬영된음식사진</string>
+    <string name="로그아웃">로그아웃</string>
+    <string name="식단기록">식단 기록</string>
+    <string name="마이페이지">마이페이지</string>
+    <string name="번진행중">번 진행 중</string>
+    <string name="ok">확인</string>
+    <string name="cancel">취소</string>
+    <string name="목표체중">목표 체중</string>
+    <string name="일일목표칼로리">일일 목표 칼로리</string>
+    <string name="현재체중">현재 체중</string>
+    <string name="수정하기">수정하기</string>
+    <string name="오늘섭취한칼로리">오늘 섭취한 칼로리</string>
 </resources>
