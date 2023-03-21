@@ -30,4 +30,18 @@ object DateFormatText {
         val currentDate = Calendar.getInstance(TimeZone.getTimeZone("UTC")).time
         return formatter.format(currentDate)
     }
+
+    fun getCurrentDateInMillis(): Long {
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        val formatter = SimpleDateFormat(DATE_YEAR_MONTH_PATTERN, currentLocale)
+        val currentDate = Calendar.getInstance(TimeZone.getTimeZone("UTC")).time
+        val currentDateString = formatter.format(currentDate)
+        return dateFormat.parse(currentDateString)!!.time
+    }
+
+    fun getSevenDaysAgoInMillis(): Long {
+        val calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
+        calendar.add(Calendar.DATE, -7)
+        return calendar.timeInMillis
+    }
 }

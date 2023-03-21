@@ -5,8 +5,6 @@ import com.example.fooding.data.model.User
 import com.example.fooding.data.source.local.AppDatabase
 import com.example.fooding.data.source.remote.PostApiClient
 import com.example.fooding.util.DateFormatText
-import java.text.SimpleDateFormat
-import java.util.*
 
 class UserRepository(database: AppDatabase, private val apiClient: PostApiClient) {
 
@@ -27,9 +25,7 @@ class UserRepository(database: AppDatabase, private val apiClient: PostApiClient
     }
 
     suspend fun getTodayPost(): Map<String, Post> {
-        val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-        val today = DateFormatText.getCurrentDate()
-        val todayLong = dateFormat.parse(today)!!.time
+        val todayLong = DateFormatText.getCurrentDateInMillis()
         return apiClient.getPostByTime("\"date\"", todayLong, todayLong)
     }
 
