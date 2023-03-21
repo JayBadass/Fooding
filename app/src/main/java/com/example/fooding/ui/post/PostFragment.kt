@@ -1,11 +1,14 @@
 package com.example.fooding.ui.post
 
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.example.fooding.HomeGraphDirections
 import com.example.fooding.databinding.FragmentPostBinding
 
 class PostFragment : Fragment() {
@@ -32,7 +35,7 @@ class PostFragment : Fragment() {
 
     private fun setLayout() {
         binding.post = args.post
-        binding.foodImgView.setImageURI(args.post?.imgUri)
+        binding.foodImgView.setImageURI(Uri.parse(args.post?.imgUri))
     }
 
     private fun setNutritionButton() {
@@ -41,6 +44,10 @@ class PostFragment : Fragment() {
             binding.btnNutrition.text = args.post?.nutritionInfo?.DESC_KOR
         } else {
             binding.btnNutrition.visibility = View.INVISIBLE
+        }
+        binding.btnNutrition.setOnClickListener {
+            val action = HomeGraphDirections.actionGlobalNutritionDetail(args.post?.nutritionInfo)
+            findNavController().navigate(action)
         }
     }
 }

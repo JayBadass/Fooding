@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="food"
+            type="com.example.fooding.data.model.FoodResponse.Food" />
+
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/add_nutrition_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <View
+                android:id="@+id/divider1"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="20dp"
+                android:background="?android:attr/listDivider"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+            <View
+                android:id="@+id/divider2"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="60dp"
+                android:background="?android:attr/listDivider"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/divider1" />
+
+            <View
+                android:id="@+id/divider3"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="60dp"
+                android:background="?android:attr/listDivider"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/divider2" />
+
+            <View
+                android:id="@+id/divider4"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="60dp"
+                android:background="?android:attr/listDivider"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/divider3" />
+
+            <View
+                android:id="@+id/divider5"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="60dp"
+                android:background="?android:attr/listDivider"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/divider4" />
+
+            <View
+                android:id="@+id/divider6"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="60dp"
+                android:background="?android:attr/listDivider"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/divider5" />
+
+            <View
+                android:id="@+id/divider7"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="60dp"
+                android:background="?android:attr/listDivider"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/divider6" />
+
+            <View
+                android:id="@+id/divider8"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="60dp"
+                android:background="?android:attr/listDivider"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/divider7" />
+
+            <View
+                android:id="@+id/divider9"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="60dp"
+                android:background="?android:attr/listDivider"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/divider8" />
+
+            <View
+                android:id="@+id/divider10"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="60dp"
+                android:background="?android:attr/listDivider"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/divider9" />
+
+            <View
+                android:id="@+id/divider11"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="60dp"
+                android:background="?android:attr/listDivider"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/divider10" />
+
+            <View
+                android:id="@+id/divider12"
+                android:layout_width="1dp"
+                android:layout_height="0dp"
+                android:background="?android:attr/listDivider"
+                app:layout_constraintBottom_toTopOf="@id/divider11"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/divider1" />
+
+            <TextView
+                android:id="@+id/text_serving_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/총섭취량"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toTopOf="@+id/divider2"
+                app:layout_constraintEnd_toStartOf="@+id/divider12"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/divider1" />
+
+            <TextView
+                android:id="@+id/text_calories"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/칼로리"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toTopOf="@+id/divider3"
+                app:layout_constraintEnd_toStartOf="@+id/divider12"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/divider2" />
+
+            <TextView
+                android:id="@+id/text_carb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/탄수화물"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toTopOf="@+id/divider4"
+                app:layout_constraintEnd_toStartOf="@+id/divider12"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/divider3" />
+
+            <TextView
+                android:id="@+id/text_protein"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/단백질"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toTopOf="@+id/divider5"
+                app:layout_constraintEnd_toStartOf="@+id/divider12"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/divider4" />
+
+            <TextView
+                android:id="@+id/text_fat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/지방"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toTopOf="@+id/divider6"
+                app:layout_constraintEnd_toStartOf="@+id/divider12"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/divider5" />
+
+            <TextView
+                android:id="@+id/text_sugars"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/당류"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toTopOf="@+id/divider7"
+                app:layout_constraintEnd_toStartOf="@+id/divider12"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/divider6" />
+
+            <TextView
+                android:id="@+id/text_sodium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/나트륨"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toTopOf="@+id/divider8"
+                app:layout_constraintEnd_toStartOf="@+id/divider12"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/divider7" />
+
+            <TextView
+                android:id="@+id/text_cholesterol"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/콜레스테롤"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toTopOf="@+id/divider9"
+                app:layout_constraintEnd_toStartOf="@+id/divider12"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/divider8" />
+
+            <TextView
+                android:id="@+id/text_saturated_fat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/포화지방"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toTopOf="@+id/divider10"
+                app:layout_constraintEnd_toStartOf="@+id/divider12"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/divider9" />
+
+            <TextView
+                android:id="@+id/text_trans_fat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/트랜스지방"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toTopOf="@+id/divider11"
+                app:layout_constraintEnd_toStartOf="@+id/divider12"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/divider10" />
+
+            <TextView
+                android:id="@+id/text_result_serving_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{@string/g_value_format(food.SERVING_SIZE)}"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toTopOf="@id/divider2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/divider12"
+                app:layout_constraintTop_toBottomOf="@id/divider1"
+                tools:text="000g" />
+
+            <TextView
+                android:id="@+id/text_result_calories"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{@string/kcal_value_format((!food.NUTR_CONT1.isEmpty()) ? food.NUTR_CONT1 : 0)}"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toTopOf="@id/divider3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/divider12"
+                app:layout_constraintTop_toBottomOf="@id/divider2"
+                tools:text="000g" />
+
+            <TextView
+                android:id="@+id/text_result_carb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{@string/g_value_format((!food.NUTR_CONT2.isEmpty()) ? food.NUTR_CONT2 : 0)}"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toTopOf="@id/divider4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/divider12"
+                app:layout_constraintTop_toBottomOf="@id/divider3"
+                tools:text="000g" />
+
+            <TextView
+                android:id="@+id/text_result_protein"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{@string/g_value_format((!food.NUTR_CONT3.isEmpty()) ? food.NUTR_CONT3 : 0 )}"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toTopOf="@id/divider5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/divider12"
+                app:layout_constraintTop_toBottomOf="@id/divider4"
+                tools:text="000g" />
+
+            <TextView
+                android:id="@+id/text_result_fat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{@string/g_value_format((!food.NUTR_CONT4.isEmpty()) ? food.NUTR_CONT4 : 0 )}"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toTopOf="@id/divider6"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/divider12"
+                app:layout_constraintTop_toBottomOf="@id/divider5"
+                tools:text="000g" />
+
+            <TextView
+                android:id="@+id/text_result_sugars"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{@string/g_value_format((!food.NUTR_CONT5.isEmpty()) ? food.NUTR_CONT5 : 0 )}"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toTopOf="@id/divider7"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/divider12"
+                app:layout_constraintTop_toBottomOf="@id/divider6"
+                tools:text="000g" />
+
+            <TextView
+                android:id="@+id/text_result_sodium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{@string/mg_value_format((!food.NUTR_CONT6.isEmpty()) ? food.NUTR_CONT6 : 0 )}"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toTopOf="@id/divider8"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/divider12"
+                app:layout_constraintTop_toBottomOf="@id/divider7"
+                tools:text="000g" />
+
+            <TextView
+                android:id="@+id/text_result_cholesterol"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{@string/mg_value_format((!food.NUTR_CONT7.isEmpty()) ? food.NUTR_CONT7 : 0 )}"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toTopOf="@id/divider9"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/divider12"
+                app:layout_constraintTop_toBottomOf="@id/divider8"
+                tools:text="000g" />
+
+            <TextView
+                android:id="@+id/text_result_saturated_fat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{@string/g_value_format((!food.NUTR_CONT8.isEmpty()) ? food.NUTR_CONT8 : 0 )}"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toTopOf="@id/divider10"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/divider12"
+                app:layout_constraintTop_toBottomOf="@id/divider9"
+                tools:text="000g" />
+
+            <TextView
+                android:id="@+id/text_result_trans_fat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{@string/g_value_format((!food.NUTR_CONT9.isEmpty()) ? food.NUTR_CONT9 : 0 )}"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toTopOf="@id/divider11"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/divider12"
+                app:layout_constraintTop_toBottomOf="@id/divider10"
+                tools:text="000g" />
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="?attr/colorPrimary"
+                android:backgroundTint="@color/white"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="?attr/actionBarTheme"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:navigationIconTint="@color/black"
+                app:title="@{food.DESC_KOR}"
+                app:titleTextColor="@color/black" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</layout>

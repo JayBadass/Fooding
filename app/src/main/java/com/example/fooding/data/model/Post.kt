@@ -10,6 +10,6 @@ data class Post(
     val time: String?,
     val category: String?,
     val memo: String?,
-    val imgUri: Uri?,
+    val imgUri: String?,
     val nutritionInfo: FoodResponse.Food?,
 ) : java.io.Serializable
