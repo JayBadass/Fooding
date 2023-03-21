@@ -7,6 +7,6 @@ class CalendarRepository(
     private val postApiClient: PostApiClient
 ) {
     suspend fun getPostByDate(orderBy: String, startAt: Long, endAt: Long): Map<String, Post> {
-        return postApiClient.getPost(orderBy, startAt, endAt)
+        return postApiClient.getPostByTime(orderBy, startAt, endAt)
     }
 }
