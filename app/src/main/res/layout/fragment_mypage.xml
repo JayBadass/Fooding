@@ -1,6 +1,253 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.fooding.ui.mypage.MyPageViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/text_mypage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:text="@string/마이페이지"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@id/divider1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/img_user"
+            android:layout_width="55dp"
+            android:layout_height="54dp"
+            android:layout_marginStart="30dp"
+            app:layout_constraintBottom_toTopOf="@id/divider2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider1"
+            app:srcCompat="@drawable/ic_mypage" />
+
+        <TextView
+            android:id="@+id/text_user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            app:layout_constraintBottom_toTopOf="@id/divider2"
+            app:layout_constraintStart_toEndOf="@+id/img_user"
+            app:layout_constraintTop_toBottomOf="@id/divider1" />
+
+        <View
+            android:id="@+id/divider2"
+            android:layout_width="409dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="100dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider1"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="140dp" />
+
+        <View
+            android:id="@+id/divider1"
+            android:layout_width="409dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="80dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/divider4"
+            android:layout_width="409dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="100dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider3" />
+
+        <View
+            android:id="@+id/divider5"
+            android:layout_width="409dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="100dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider4" />
+
+        <View
+            android:id="@+id/divider3"
+            android:layout_width="409dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="100dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider2" />
+
+        <View
+            android:id="@+id/divider_vertical"
+            android:layout_width="1dp"
+            android:layout_height="0dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintBottom_toTopOf="@id/divider5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/divider3" />
+
+        <Button
+            android:id="@+id/btn_logout"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/로그아웃"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_edit" />
+
+        <Button
+            android:id="@+id/btn_edit"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="@color/teal_700"
+            android:text="@string/수정하기"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider5" />
+
+        <TextView
+            android:id="@+id/text_goal_calories_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@id/divider5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/divider_vertical"
+            app:layout_constraintTop_toBottomOf="@id/divider4" />
+
+        <TextView
+            android:id="@+id/text_calories_goal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/일일목표칼로리"
+            android:textSize="11sp"
+            app:layout_constraintStart_toStartOf="@id/divider_vertical"
+            app:layout_constraintTop_toTopOf="@id/divider4" />
+
+        <TextView
+            android:id="@+id/text_current_wt_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@id/divider4"
+            app:layout_constraintEnd_toStartOf="@id/divider_vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider3" />
+
+        <TextView
+            android:id="@+id/text_wt_now"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/현재체중"
+            android:textSize="11sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/divider3"
+            tools:layout_editor_absoluteX="30dp"
+            tools:layout_editor_absoluteY="303dp" />
+
+        <TextView
+            android:id="@+id/text_goal_wt_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@id/divider4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/divider_vertical"
+            app:layout_constraintTop_toBottomOf="@id/divider3" />
+
+        <TextView
+            android:id="@+id/text_wt_goal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/목표체중"
+            android:textSize="11sp"
+            app:layout_constraintStart_toStartOf="@id/divider_vertical"
+            app:layout_constraintTop_toTopOf="@id/divider3" />
+
+        <TextView
+            android:id="@+id/text_intake_calories_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@id/divider5"
+            app:layout_constraintEnd_toStartOf="@id/divider_vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider4" />
+
+        <TextView
+            android:id="@+id/text_calories_now"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/오늘섭취한칼로리"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/divider4" />
+
+        <TextView
+            android:id="@+id/text_day_counting1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:text="@string/식단기록"
+            android:textSize="17sp"
+            app:layout_constraintBottom_toTopOf="@id/divider3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider2"
+            tools:layout_editor_absoluteY="220dp" />
+
+        <TextView
+            android:id="@+id/text_day_counting2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:textSize="17sp"
+            app:layout_constraintBottom_toTopOf="@id/divider3"
+            app:layout_constraintStart_toEndOf="@+id/text_day_counting1"
+            app:layout_constraintTop_toBottomOf="@id/divider2" />
+
+        <TextView
+            android:id="@+id/text_day_counting3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/번진행중"
+            android:textSize="17sp"
+            app:layout_constraintBottom_toTopOf="@id/divider3"
+            app:layout_constraintStart_toEndOf="@+id/text_day_counting2"
+            app:layout_constraintTop_toBottomOf="@id/divider2"
+            tools:layout_editor_absoluteY="220dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
