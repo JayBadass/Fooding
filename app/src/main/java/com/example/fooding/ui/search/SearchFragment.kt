@@ -9,24 +9,20 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.fooding.FoodingApplication
 import com.example.fooding.HomeGraphDirections
 import com.example.fooding.data.model.FoodResponse
-import com.example.fooding.data.source.SearchRepository
 import com.example.fooding.databinding.FragmentSearchBinding
 import com.example.fooding.ui.common.FoodClickListener
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class SearchFragment : Fragment(), FoodClickListener {
 
     private var _binding: FragmentSearchBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: SearchViewModel by viewModels {
-        SearchViewModel.provideFactory(
-            repository = SearchRepository(FoodingApplication.appContainer.provideFoodApiClient())
-        )
-    }
+    private val viewModel: SearchViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,

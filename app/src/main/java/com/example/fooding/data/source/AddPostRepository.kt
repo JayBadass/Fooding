@@ -9,8 +9,9 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 import kotlinx.coroutines.tasks.await
+import javax.inject.Inject
 
-class AddPostRepository(
+class AddPostRepository @Inject constructor(
     private val postApiClient: PostApiClient
 ) {
 
@@ -49,6 +50,16 @@ class AddPostRepository(
         nutrition: FoodResponse.Food?,
     ) {
         val downloadUri = if (imgUri != null) uploadImg(imgUri) else Uri.EMPTY
-        postApiClient.uploadPost(Post(title, date, time, category, memo, downloadUri.toString(), nutrition))
+        postApiClient.uploadPost(
+            Post(
+                title,
+                date,
+                time,
+                category,
+                memo,
+                downloadUri.toString(),
+                nutrition
+            )
+        )
     }
 }

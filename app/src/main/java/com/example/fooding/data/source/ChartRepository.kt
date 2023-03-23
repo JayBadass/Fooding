@@ -3,8 +3,9 @@ package com.example.fooding.data.source
 import com.example.fooding.data.model.Post
 import com.example.fooding.data.source.remote.PostApiClient
 import com.example.fooding.util.DateFormatText
+import javax.inject.Inject
 
-class ChartRepository(private val apiClient: PostApiClient) {
+class ChartRepository @Inject constructor(private val apiClient: PostApiClient) {
 
     suspend fun getTodayPost(): Map<String, Post> {
         val todayLong = DateFormatText.getCurrentDateInMillis()
