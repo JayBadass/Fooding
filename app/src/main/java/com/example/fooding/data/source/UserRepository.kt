@@ -2,20 +2,22 @@ package com.example.fooding.data.source
 
 import com.example.fooding.data.model.Post
 import com.example.fooding.data.model.User
-import com.example.fooding.data.source.local.AppDatabase
+import com.example.fooding.data.source.local.UserDao
 import com.example.fooding.data.source.remote.PostApiClient
 import com.example.fooding.util.DateFormatText
+import javax.inject.Inject
 
-class UserRepository(database: AppDatabase, private val apiClient: PostApiClient) {
-
-    private val dao = database.userDao()
+class UserRepository @Inject constructor(
+    private val userDao: UserDao,
+    private val apiClient: PostApiClient
+) {
 
     suspend fun getUserById(id: String): User {
-        return dao.getUser(id)
+        return userDao.getUser(id)
     }
 
     suspend fun saveUser(user: User) {
-        return dao.insertUser(user)
+        return userDao.insertUser(user)
     }
 
     suspend fun getPostCount(): Int {
@@ -30,6 +32,6 @@ class UserRepository(database: AppDatabase, private val apiClient: PostApiClient
     }
 
     suspend fun updateUser(user: User) {
-        dao.updateWeightCalories(user)
+        userDao.updateWeightCalories(user)
     }
 }

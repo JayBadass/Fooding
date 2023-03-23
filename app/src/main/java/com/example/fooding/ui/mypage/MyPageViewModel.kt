@@ -1,12 +1,14 @@
 package com.example.fooding.ui.mypage
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewmodel.initializer
-import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.fooding.data.model.User
 import com.example.fooding.data.source.UserRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class MyPageViewModel(private val userRepository: UserRepository) : ViewModel() {
+@HiltViewModel
+class MyPageViewModel @Inject constructor(private val userRepository: UserRepository) :
+    ViewModel() {
 
     suspend fun loadUserData(id: String): User {
         return userRepository.getUserById(id)
@@ -30,15 +32,8 @@ class MyPageViewModel(private val userRepository: UserRepository) : ViewModel() 
         val updatedUser = user.copy(
             currentWeight = updateFields["currentWeight"] ?: user.currentWeight,
             goalWeight = updateFields["goalWeight"] ?: user.goalWeight,
-            goalCalories = updateFields["goalCalories"] ?: user.goalCalories)
+            goalCalories = updateFields["goalCalories"] ?: user.goalCalories
+        )
         userRepository.updateUser(updatedUser)
-    }
-
-    companion object {
-        fun provideFactory(repository: UserRepository) = viewModelFactory {
-            initializer {
-                MyPageViewModel(repository)
-            }
-        }
     }
 }

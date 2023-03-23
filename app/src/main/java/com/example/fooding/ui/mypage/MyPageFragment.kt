@@ -9,26 +9,21 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
-import com.example.fooding.FoodingApplication
 import com.example.fooding.data.model.User
-import com.example.fooding.data.source.UserRepository
-import com.example.fooding.data.source.remote.PostApiClient
 import com.example.fooding.databinding.FragmentMypageBinding
 import com.example.fooding.ui.signin.SignInActivity
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class MyPageFragment : Fragment(), InputDialog.NoticeDialogListener {
 
     private var _binding: FragmentMypageBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel by viewModels<MyPageViewModel> {
-        MyPageViewModel.provideFactory(
-            repository = UserRepository(FoodingApplication.database, PostApiClient.create())
-        )
-    }
+    private val viewModel: MyPageViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,

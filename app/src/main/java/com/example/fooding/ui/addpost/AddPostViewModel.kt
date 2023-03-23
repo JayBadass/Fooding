@@ -5,13 +5,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.lifecycle.viewmodel.initializer
-import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.fooding.data.model.FoodResponse
 import com.example.fooding.data.source.AddPostRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class AddPostViewModel(private val repository: AddPostRepository) : ViewModel() {
+@HiltViewModel
+class AddPostViewModel @Inject constructor(private val repository: AddPostRepository) : ViewModel() {
 
     val memo = MutableLiveData<String>()
     private val _title = MutableLiveData<String>()
@@ -74,13 +75,5 @@ class AddPostViewModel(private val repository: AddPostRepository) : ViewModel() 
 
     fun setNutrition(nutrition: FoodResponse.Food) {
         nutritionInfo = nutrition
-    }
-
-    companion object {
-        fun provideFactory(repository: AddPostRepository) = viewModelFactory {
-            initializer {
-                AddPostViewModel(repository)
-            }
-        }
     }
 }

@@ -28,14 +28,14 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.example.fooding.FoodingApplication
 import com.example.fooding.data.model.FoodResponse
-import com.example.fooding.data.source.AddPostRepository
 import com.example.fooding.databinding.FragmentAddPostBinding
+import dagger.hilt.android.AndroidEntryPoint
 import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
 
+@AndroidEntryPoint
 class AddPostFragment : Fragment() {
 
     private var _binding: FragmentAddPostBinding? = null
@@ -46,12 +46,7 @@ class AddPostFragment : Fragment() {
     private var hasCameraPermission = false
 
     private val args: AddPostFragmentArgs by navArgs()
-
-    private val viewModel: AddPostViewModel by viewModels {
-        AddPostViewModel.provideFactory(
-            repository = AddPostRepository(FoodingApplication.appContainer.providePostApiClient())
-        )
-    }
+    private val viewModel: AddPostViewModel by viewModels()
 
     private val permissionLauncher: ActivityResultLauncher<Array<String>> =
         registerForActivityResult(

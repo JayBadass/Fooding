@@ -2,15 +2,16 @@ package com.example.fooding.ui.chart
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewmodel.initializer
-import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.fooding.data.model.Nutrition
 import com.example.fooding.data.source.ChartRepository
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class ChartViewModel(private val repository: ChartRepository) : ViewModel() {
+@HiltViewModel
+class ChartViewModel @Inject constructor(private val repository: ChartRepository) : ViewModel() {
 
     suspend fun getTodayNutrition(): Nutrition {
         val posts = repository.getTodayPost()
@@ -81,14 +82,4 @@ class ChartViewModel(private val repository: ChartRepository) : ViewModel() {
         dataSet.valueTextSize = 11f
         return LineData(dataSet)
     }
-
-
-    companion object {
-        fun provideFactory(repository: ChartRepository) = viewModelFactory {
-            initializer {
-                ChartViewModel(repository)
-            }
-        }
-    }
-
 }

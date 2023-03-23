@@ -15,8 +15,6 @@ import com.example.fooding.HomeActivity
 import com.example.fooding.R
 import com.example.fooding.data.model.User
 import com.example.fooding.data.source.UserRepository
-import com.example.fooding.data.source.local.AppDatabase
-import com.example.fooding.data.source.remote.PostApiClient
 import com.example.fooding.databinding.ActivitySigninBinding
 import com.google.android.gms.auth.api.identity.BeginSignInRequest
 import com.google.android.gms.auth.api.identity.GetSignInIntentRequest
@@ -26,15 +24,18 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.android.material.snackbar.Snackbar
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 private typealias SignInSuccessListener = (idToken: String) -> Unit
 
+@AndroidEntryPoint
 class SignInActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySigninBinding
     private lateinit var signInClient: SignInClient
-    private lateinit var userRepository: UserRepository
+    @Inject lateinit var userRepository: UserRepository
     private val signInRequest: BeginSignInRequest = getBeginSignInRequest()
     private val tag = "SingInActivity"
 
@@ -184,8 +185,6 @@ class SignInActivity : AppCompatActivity() {
     }
 
     private fun saveUser(user: User) {
-        val userDao = AppDatabase.getInstance(this)
-        userRepository = UserRepository(userDao, PostApiClient.create())
         lifecycleScope.launch {
             userRepository.saveUser(user)
         }

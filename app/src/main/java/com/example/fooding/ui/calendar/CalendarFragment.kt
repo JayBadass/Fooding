@@ -10,27 +10,23 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.fooding.FoodingApplication
 import com.example.fooding.HomeGraphDirections
 import com.example.fooding.data.model.Post
-import com.example.fooding.data.source.CalendarRepository
 import com.example.fooding.databinding.FragmentCalendarBinding
 import com.example.fooding.ui.common.PostClickListener
 import com.example.fooding.util.DateFormatText
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
 
+@AndroidEntryPoint
 class CalendarFragment : Fragment(), PostClickListener {
 
     private var _binding: FragmentCalendarBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: CalendarViewModel by viewModels {
-        CalendarViewModel.provideFactory(
-            repository = CalendarRepository(FoodingApplication.appContainer.providePostApiClient())
-        )
-    }
+    private val viewModel: CalendarViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,

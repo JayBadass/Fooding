@@ -1,15 +1,17 @@
 package com.example.fooding.ui.calendar
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewmodel.initializer
-import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.fooding.data.model.Post
 import com.example.fooding.data.source.CalendarRepository
 import com.example.fooding.util.DateFormatText
+import dagger.hilt.android.lifecycle.HiltViewModel
 import java.text.SimpleDateFormat
 import java.util.*
+import javax.inject.Inject
 
-class CalendarViewModel(private val repository: CalendarRepository) : ViewModel() {
+@HiltViewModel
+class CalendarViewModel @Inject constructor(private val repository: CalendarRepository) :
+    ViewModel() {
 
     suspend fun loadPost(date: Long): List<Post> {
         val posts = repository.getPostByDate("\"date\"", date, date)
@@ -23,14 +25,6 @@ class CalendarViewModel(private val repository: CalendarRepository) : ViewModel(
         val startDateLong = dateFormat.parse(startDateString)!!.time
         val endDateLong = dateFormat.parse(endDateString)!!.time
         return repository.getPostByDate("\"date\"", startDateLong, endDateLong).values.toList()
-    }
-
-    companion object {
-        fun provideFactory(repository: CalendarRepository) = viewModelFactory {
-            initializer {
-                CalendarViewModel(repository)
-            }
-        }
     }
 }
 

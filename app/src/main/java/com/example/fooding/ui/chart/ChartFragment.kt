@@ -7,21 +7,17 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import com.example.fooding.FoodingApplication
-import com.example.fooding.data.source.ChartRepository
 import com.example.fooding.databinding.FragmentChartBinding
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.components.YAxis
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class ChartFragment : Fragment() {
 
-    private val viewModel: ChartViewModel by viewModels {
-        ChartViewModel.provideFactory(
-            repository = ChartRepository(FoodingApplication.appContainer.providePostApiClient())
-        )
-    }
+    private val viewModel: ChartViewModel by viewModels()
 
     private var _binding: FragmentChartBinding? = null
     private val binding get() = _binding!!
