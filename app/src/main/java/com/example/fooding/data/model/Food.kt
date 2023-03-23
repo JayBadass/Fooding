@@ -45,3 +45,16 @@ data class FoodResponse(
         val FOOD_CD: String?,
     ) : java.io.Serializable
 }
+
+data class Nutrition(
+    val servingSize: String,
+    val calories: String,
+    val carb: String,
+    val protein: String,
+    val fat: String,
+    val sugars: String,
+    val sodium: String,
+    val cholesterol: String,
+    val saturatedFat: String,
+    val transFat: String,
+)
