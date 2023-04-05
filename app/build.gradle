@@ -19,18 +19,26 @@ android {
         minSdk 24
         targetSdk 33
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.0"
+        setProperty("archivesBaseName", "${applicationId}-v${versionName}")
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         buildConfigField "String", "GOOGLE_CLIENT_ID", properties["google_client_id"]
         buildConfigField "String", "SERVICE_KEY", properties["service_key"]
+        buildConfigField "String", "DATABASE_URL", properties["database_url"]
     }
 
     buildTypes {
         release {
             minifyEnabled false
+            debuggable false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            versionNameSuffix "-release"
+        }
+        debug {
+            debuggable true
+            versionNameSuffix "-debug"
         }
     }
     compileOptions {
