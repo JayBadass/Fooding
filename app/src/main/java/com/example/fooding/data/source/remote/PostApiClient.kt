@@ -1,5 +1,6 @@
 package com.example.fooding.data.source.remote
 
+import com.example.fooding.BuildConfig
 import com.example.fooding.data.model.Converters
 import com.example.fooding.data.model.Post
 import com.squareup.moshi.Moshi
@@ -28,8 +29,7 @@ interface PostApiClient {
     suspend fun getAllPost(): Map<String, Post>
 
     companion object {
-        private const val baseUrl =
-            "https://fooding-a09ef-default-rtdb.asia-southeast1.firebasedatabase.app"
+        private const val baseUrl = BuildConfig.DATABASE_URL
 
         fun create(): PostApiClient {
 

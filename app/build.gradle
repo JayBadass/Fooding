@@ -26,6 +26,7 @@ android {
 
         buildConfigField "String", "GOOGLE_CLIENT_ID", properties["google_client_id"]
         buildConfigField "String", "SERVICE_KEY", properties["service_key"]
+        buildConfigField "String", "DATABASE_URL", properties["database_url"]
     }
 
     buildTypes {
